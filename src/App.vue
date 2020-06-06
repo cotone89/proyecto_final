@@ -1,32 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <Header></Header>
+        <!-- <transition name="mi-transicion">-->
+         <router-view />
+     <!--</transition>-->
+        <Footer></Footer>
     </div>
-    <router-view/>
-  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>// @ is an alias to /src
+    import Header from '@/components/Header.vue'
+    import Footer from '@/components/Footer.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: 'Principal',
+  components: {
+      Header,
+      Footer
   }
+}</script>
+
+<style lang="scss">
+  /*  .mi-transicion-enter-active, .mi-transicion-leave-active {
+        transition: opacity 0.8s;
+    }
+    .mi-transicion-enter, .mi-transicion-leave-to{
+        opacity: 0;
+    }*/
+
+ #app {
+     background-image: url("assets/img/bg-comida.jpg");
+     width: 100%;
+     height: auto;
+     padding-top: 75px;
+     font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
 }
+
 </style>
