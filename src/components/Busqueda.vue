@@ -13,12 +13,16 @@
             </div>
 
             <div id="busquedaEncontradaUnElemento" :style="{display:display2}">
-                <h2 class="busqueda__titulo__receta ">{{receta_titulo}}</h2>
+
+                <h2 class="busqueda__titulo__receta pt-4">{{receta_titulo}}</h2>
+                <b-button v-if="usuarioLogueado" variant="warning">A&ntilde;adir a favoritos</b-button>
                 <div class="row pb-3" style="margin:2%;">
                     <div class="col-sm-6 p-3">
                         <img :src="receta_imagen" class="busqueda__imagen__receta" alt="imagen no disponible" />
+
                     </div>
                     <div class="col-sm-6 p-3">
+
                         <h3 class="busqueda__titulo__preparacion__receta">{{receta_titulo_ingredientes}}</h3>
                         <div class="busqueda__preparacion__receta text-left">
                             <ul>
@@ -67,10 +71,16 @@ export default {
             receta_lista_ingredientes: [],
             receta_no_encontrada: 'No hemos encontrado tu antojo :(',
             receta_titulo_lista: 'Tenemos m\u00E1s de una opci\u00F3n para ti',
-            lista_recetas: []
+            lista_recetas: [],
+            receta_boton_volver: 'Volver a la lista'
 
-        }
-      },
+            }
+        },
+        computed: {
+            usuarioLogueado() {
+                return this.$store.getters.getUsuarioLogueado
+            }
+        },
         methods: {
             elijoReceta(receta) {
                 console.log("elijo receta-- " + receta.strMeal);

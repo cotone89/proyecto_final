@@ -2,19 +2,35 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Principal from '../components/Principal.vue'
 import Busqueda from '../components/Busqueda.vue'
+import Login from '../components/Login.vue'
+import Favoritos from '../components/Favoritos.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/principal',
-    name: 'Principal',
-    component: Principal
+        path: '/home',
+        name: 'Principal',
+        component: Principal,
+          alias: '/',
+          meta: {
+              login: true
+          }
     },
     {
         path: '/busqueda',
         name: 'Busqueda',
         component: Busqueda
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/favoritos',
+        name: 'Favoritos',
+        component: Favoritos
     },
   {
     path: '/about',

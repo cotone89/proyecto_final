@@ -2,14 +2,19 @@
     <div class="principal">
         <h1 class="principal__titulo p-5 ">{{titulo_principal}}</h1>
         <button type="button" class="btn btn-success principal__boton mb-5 w-25" @click="irBusqueda">{{titulo_boton}}</button>
-        <!--add carrusel-->
+        
+        <Carrusel></Carrusel>
     </div>
 </template>
 
 <script>
-
-export default {
+    import Carrusel from '@/components/Carrusel.vue'
+    export default {
+     
     name: 'Principal',
+    components: {
+            Carrusel
+        },
     data: function () {
         return {
             titulo_principal: 'Hola \u00bfTienes hambre?',

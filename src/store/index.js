@@ -6,14 +6,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-      marca:'Tengo.Hambre'
+        marca: 'Tengo.Hambre',
+        usuarioLogueado: false
     },
     getters:{
         getMarca(state) {
             return state.marca;
-        }
+        },
+        getUsuarioLogueado(state) {
+            return state.usuarioLogueado;
+        },
     },
     mutations: {
+        cambioEstadoLogueado(state) {
+            state.usuarioLogueado = !state.usuarioLogueado;
+            return state.usuarioLogueado;
+        }
   },
     actions: {
         async obtenerRecetaNombre(context,nombreReceta) {

@@ -3,9 +3,8 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\assets",
     "\\src\\assets\\img",
-    "\\src\\components",
+    "\\src\\config",
     "\\src\\router",
     "\\src\\store",
     "\\src\\views"
