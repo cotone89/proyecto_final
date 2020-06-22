@@ -26,8 +26,8 @@
             <li class="nav-item">
               <router-link :to="{ name: 'Favoritos'}" class="p-3 router__texto">Favoritos</router-link>
             </li>
-            <li>
-              <a class="nav-link" href="#" @click="salida">Logout</a>
+            <li class="nav-item">
+              <a class="nav-logout" href="#" @click="salida">Logout</a>
             </li>
           </ul>
         </div>
@@ -73,5 +73,10 @@ nav {
 .router__texto {
   text-decoration: none !important;
   color: white;
+}
+
+.nav-logout {
+  color: white;
+  text-decoration: none !important;
 }
 </style>

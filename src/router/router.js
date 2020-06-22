@@ -12,7 +12,6 @@ const routes = [{
     path: "/home",
     name: "Principal",
     component: Principal,
-    alias: "/",
     meta: {
       login: true,
     },
@@ -25,6 +24,7 @@ const routes = [{
   {
     path: "/login",
     name: "Login",
+    alias: "/",
     component: Login,
   },
   {
