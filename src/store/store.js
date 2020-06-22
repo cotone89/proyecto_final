@@ -14,6 +14,9 @@ export default new Vuex.Store({
         getMarca(state) {
             return state.marca;
         },
+        getUsuarioLogueado(state) {
+            return state.uidUser;
+        }
         // getUsuarioLogueado(state) {
         //     return state.usuarioLogueado;
         // },
