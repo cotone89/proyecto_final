@@ -16,15 +16,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto text-center">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link :to="{ name: 'Principal'}" class="p-3 router__texto">Home</router-link>
-            </li>
+            </li>-->
             <li class="nav-item">
               <router-link :to="{ name: 'Busqueda'}" class="p-3 router__texto">B&uacute;squeda</router-link>
             </li>
-            <!-- <li class="nav-item" v-if="usuarioLogueado">
-              <router-link :to="{ name: 'Favoritos'}" class="p-3 router__texto">Favoritos</router-link>
-            </li>-->
             <li class="nav-item">
               <router-link :to="{ name: 'Login'}" class="p-3 router__texto">Login</router-link>
             </li>

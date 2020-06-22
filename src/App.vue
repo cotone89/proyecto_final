@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Header v-if="!$store.state.uidUser"></Header>
-    <HeaderLogout v-else></HeaderLogout>
+    <!-- 1) Se pasa el evento del hijo HeaderLogout.vue al padre App.vue: -->
+    <HeaderLogout v-else @clickSalida="salida" :texto="texto"></HeaderLogout>
     <!-- <transition name="mi-transicion">-->
     <router-view />
     <!--</transition>-->
@@ -12,17 +13,39 @@
 <script>
 // @ is an alias to /src
 import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
 import HeaderLogout from "@/components/HeaderLogout";
+import Footer from "@/components/Footer.vue";
 import firebase from "firebase";
 
 export default {
-  name: "Principal",
+  name: "App",
   components: {
     Header,
     HeaderLogout,
     Footer
   },
+  data() {
+    return {
+      texto: "Logout"
+    };
+  },
+  methods: {
+    salida() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          console.log("salida de usuario");
+          this.$router.replace("/login");
+        });
+    }
+  },
+  // 2) Probando evento desde el hijo HeaderLogout.vue:
+  // methods: {
+  //   salida(info) {
+  //     console.log("Click con evento en el botón del children: " + info);
+  //   }
+  // },
   // Aquí va el proceso de escucha de estados de auth (para saber si un usuario entró o salió de la app):
   mounted() {
     firebase.auth().onAuthStateChanged(user => {

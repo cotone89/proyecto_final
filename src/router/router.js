@@ -1,36 +1,38 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Principal from "../components/Principal.vue";
+// import Principal from "../components/Principal.vue";
 import Busqueda from "../components/Busqueda.vue";
+// import BusquedaVista from "../components/BusquedaVista.vue";
+// import LoginVista from "../components/LoginVista.vue";
 import Login from "../components/Login.vue";
-import Favoritos from "../components/Favoritos.vue";
+import FavoritosVista from "../views/FavoritosVista.vue";
 import store from '../store/store';
 
 Vue.use(VueRouter);
 
-const routes = [{
-    path: "/home",
-    name: "Principal",
-    component: Principal,
-    meta: {
-      login: true,
-    },
-  },
+const routes = [
+  // {
+  //   path: "/home",
+  //   name: "Principal",
+  //   component: Principal,
+  // },
   {
     path: "/busqueda",
     name: "Busqueda",
     component: Busqueda,
+    // component: BusquedaVista,
   },
   {
     path: "/login",
     name: "Login",
-    alias: "/",
     component: Login,
+    alias: "/",
+    // component: LoginVista,
   },
   {
     path: "/favoritos",
     name: "Favoritos",
-    component: Favoritos,
+    component: FavoritosVista,
     // Campo meta que permite entrar a favoritos sólo si estás autenticado:
     meta: {
       requiresAuth: true,

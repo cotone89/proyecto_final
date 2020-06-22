@@ -36,6 +36,7 @@ export default new Vuex.Store({
             return response.data.meals;
         },
         idUserLogin(context, idUsuarioRecibido) {
+            console.log(idUsuarioRecibido)
             context.commit('agregandoID', idUsuarioRecibido)
         }
     },

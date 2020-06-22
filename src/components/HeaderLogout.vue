@@ -17,9 +17,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto text-center">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link :to="{ name: 'Principal'}" class="p-3 router__texto">Home</router-link>
-            </li>
+            </li>-->
             <li class="nav-item">
               <router-link :to="{ name: 'Busqueda'}" class="p-3 router__texto">B&uacute;squeda</router-link>
             </li>
@@ -27,7 +27,9 @@
               <router-link :to="{ name: 'Favoritos'}" class="p-3 router__texto">Favoritos</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-logout" href="#" @click="salida">Logout</a>
+              <a class="nav-logout" href="#" @click="salida">{{texto}}</a>
+              <!-- 1) Se pasa el evento del hijo HeaderLogout.vue al padre App.vue: -->
+              <!-- <a class="nav-logout" href="#" @click="salida">{{texto}}</a> -->
             </li>
           </ul>
         </div>
@@ -36,27 +38,19 @@
   </div>
 </template>
 <script>
-import firebase from "firebase";
 export default {
   name: "HeaderLogout",
+  props: ["texto"],
   methods: {
+    // 3) Probando evento hacia el padre App.vue:
     salida() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          console.log("salida de usuario");
-          this.$router.replace("/login");
-        });
+      this.$emit("clickSalida");
     }
   },
   computed: {
     marca() {
       return this.$store.getters.getMarca;
     }
-    // usuarioLogueado() {
-    //   return this.$store.getters.getUsuarioLogueado;
-    // }
   }
 };
 </script>

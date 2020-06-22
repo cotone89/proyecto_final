@@ -2,7 +2,6 @@
   <div class="login">
     <h1 class="login__titulo p-5">{{login_titulo}}</h1>
     <div class="alert alert-danger" role="alert" v-if="login_error">{{login_error}}</div>
-    <!-- <div class="alert alert-success" role="alert" v-if="userOk">{{userOk}}</div> -->
     <b-row class="my-1 login__grid">
       <b-form-input
         type="email"
@@ -60,13 +59,8 @@ export default {
           .auth()
           .signInWithEmailAndPassword(this.login_email, this.login_pass)
           .then(() => {
-            //var user = firebase.auth().currentUser;
-            // this.$store.commit("cambioEstadoLogueado");
-            // console.log("data " + data);
-
             this.userOK = "Usuario Correcto";
-            // this.userOK = "";
-            this.$router.replace({ name: "Principal" });
+            this.$router.replace({ name: "Busqueda" });
           })
           .catch(error => {
             console.error(error);
