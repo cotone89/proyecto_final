@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <nav class="navigation navbar navbar-expand-lg navbar-dark fixed-top">
@@ -22,11 +23,11 @@
             <li class="nav-item">
               <router-link :to="{ name: 'Busqueda'}" class="p-3 router__texto">B&uacute;squeda</router-link>
             </li>
-            <!-- <li class="nav-item" v-if="usuarioLogueado">
-              <router-link :to="{ name: 'Favoritos'}" class="p-3 router__texto">Favoritos</router-link>
-            </li>-->
             <li class="nav-item">
-              <router-link :to="{ name: 'Login'}" class="p-3 router__texto">Login</router-link>
+              <router-link :to="{ name: 'Favoritos'}" class="p-3 router__texto">Favoritos</router-link>
+            </li>
+            <li>
+              <a class="nav-link" href="#" @click="salida">Logout</a>
             </li>
           </ul>
         </div>
@@ -35,14 +36,26 @@
   </div>
 </template>
 <script>
+import firebase from "firebase";
 export default {
-  name: "Header",
+  name: "HeaderLogout",
+  methods: {
+    salida() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          console.log("salida de usuario");
+          this.$router.replace("/login");
+        });
+    }
+  },
   computed: {
     marca() {
       return this.$store.getters.getMarca;
     }
     // usuarioLogueado() {
-    //     return this.$store.getters.getUsuarioLogueado
+    //   return this.$store.getters.getUsuarioLogueado;
     // }
   }
 };
