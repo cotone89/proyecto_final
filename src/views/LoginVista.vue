@@ -1,16 +1,16 @@
 <template>
   <div>
-    <!-- <login></login> -->
+    <login></login>
   </div>
 </template>
 
 <script>
-// import Login from "../components/Login.vue";
-// export default {
-//   components: {
-//     Login
-//   }
-// };
+import Login from "../components/Login.vue";
+export default {
+  components: {
+    Login
+  }
+};
 </script>
 
 <style>

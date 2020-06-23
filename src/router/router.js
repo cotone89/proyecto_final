@@ -1,33 +1,22 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Principal from "../components/Principal.vue";
-import Busqueda from "../components/Busqueda.vue";
-// import BusquedaVista from "../components/BusquedaVista.vue";
-// import LoginVista from "../components/LoginVista.vue";
-import Login from "../components/Login.vue";
+import BusquedaVista from "../views/BusquedaVista.vue";
+import LoginVista from "../views/LoginVista.vue";
 import FavoritosVista from "../views/FavoritosVista.vue";
 import store from '../store/store';
 
 Vue.use(VueRouter);
 
-const routes = [
-  // {
-  //   path: "/home",
-  //   name: "Principal",
-  //   component: Principal,
-  // },
-  {
+const routes = [{
     path: "/busqueda",
     name: "Busqueda",
-    component: Busqueda,
-    // component: BusquedaVista,
+    component: BusquedaVista,
   },
   {
     path: "/login",
     name: "Login",
-    component: Login,
     alias: "/",
-    // component: LoginVista,
+    component: LoginVista,
   },
   {
     path: "/favoritos",
