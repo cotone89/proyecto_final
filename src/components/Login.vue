@@ -44,7 +44,7 @@ export default {
       login_email: "",
       login_pass: "",
       login_error: "",
-      texto_irRegistro: "¿No estás registrado?",
+      texto_irRegistro: "¿No te has registrado?",
       titulo_boton_irRegistro: "Ir a Registro!"
     };
   },

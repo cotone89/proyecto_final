@@ -65,7 +65,7 @@ export default {
       signin_pass1: "",
       signin_pass2: "",
       signin_error: "",
-      texto_irLogin: "¿Ya estás registrado?",
+      texto_irLogin: "¿Ya te has registrado?",
       titulo_boton_irLogin: "Ir a Login!"
     };
   },
@@ -74,38 +74,39 @@ export default {
       console.log("registro");
       const expresionCorreo = /\w+@\w+\.+[a-z]/;
       const expresionNombre = /^[a-zA-ZàáÁÀñÑóÓúÚÖöíÍéÉ\s]/;
-
-      if (!expresionCorreo.test(this.signin_email)) {
-        this.signin_error = "Correo Electrónico no es válido";
+      if (
+        (!this.signin_email &&
+          !this.signin_pass1 &&
+          !this.signin_pass2 &&
+          !this.signin_nombre) ||
+        (!this.signin_email && !this.signin_pass1 && !this.signin_pass2) ||
+        (!this.signin_pass1 && !this.signin_pass2) ||
+        (!this.signin_email && !this.signin_pass1 && !this.signin_pass2)
+      ) {
+        this.signin_error = "Debes llenar todos los datos de usuario";
         setTimeout(() => {
           this.signin_error = "";
         }, 3000);
       } else if (
         !expresionNombre.test(this.signin_nombre) ||
-        !this.signin_nombre.length > 2
+        this.signin_nombre.length < 2
       ) {
         this.signin_error = "El Nombre no es permitido";
         setTimeout(() => {
           this.signin_error = "";
         }, 3000);
-      } else if (
-        !this.signin_pass1 ||
-        !this.signin_pass2 ||
-        this.signin_pass1 != this.signin_pass2 ||
-        this.signin_pass1.length < 6
-      ) {
-        this.signin_error =
-          "Error en las contraseñas / Debe ser mayor a 6 digitos";
+      } else if (this.signin_pass1.length < 6) {
+        this.signin_error = "La contraseña debe ser mayor a 6 digitos";
         setTimeout(() => {
           this.signin_error = "";
         }, 3000);
-      } else if (
-        !this.signin_email &&
-        !this.signin_pass1 &&
-        !this.signin_pass2 &&
-        !this.signin_nombre
-      ) {
-        this.signin_error = "Debe ingresar los datos del usuario";
+      } else if (!expresionCorreo.test(this.signin_email)) {
+        this.signin_error = "Ingresa un correo electrónico válido";
+        setTimeout(() => {
+          this.signin_error = "";
+        }, 3000);
+      } else if (this.signin_pass1 != this.signin_pass2) {
+        this.signin_error = "Contraseñas deben ser iguales";
         setTimeout(() => {
           this.signin_error = "";
         }, 3000);
@@ -140,15 +141,7 @@ export default {
           .catch(error => {
             console.error(error);
           });
-        // let datosUser = {
-        //     displayName: respuesta.user.displayName,
-        //     email: respuesta.user.email,
-        //     emailVerified: respuesta.user.emailVerified,
-        //     uid: respuesta.user.uid
-        //     },
-        //                     this.$store.dispatch('usurioRegistro',datosUser);
-        //                     this.$router.push('/');
-        //                 })
+
         //             }).catch(error => {
         //                 console.error(error);
         //                 if (error.code == 'auth/email-already-in-use'){
@@ -156,62 +149,17 @@ export default {
         //                         icon: 'error',
         //                         title: 'Oops...',
         //                         text: 'El usuario ya existe',
-        //                         footer: '<b>AppToDo</b>'
+        //                         footer: '<b>Tengo.Hambre</b>'
         //                     });
         //                 }
 
         //             })
         //         }
         // }
-
-        // registro() {
-        //         this.signin_error = [];
-        //         console.log("registro");
-        //         const expresionCorreo = /\w+@\w+\.+[a-z]/;
-        //         const expresionNombre = /^[a-zA-ZàáÁÀñÑóÓúÚÖöíÍéÉ\s]/;
-
-        //         if (!expresionCorreo.test(this.email)){
-        //             this.error.push("Correo Electrónico no es valido");
-        //         }else if(!expresionNombre.test(this.name) || !this.name.length > 2){
-        //             this.error.push('El Nombre no es permitido')
-        //         }else if(!this.passA || !this.passB || this.passA != this.passB || this.passA.length < 6){
-        //             this.error.push('Error en las contraseñas / Debe ser mayor a 6 digitos')
-        //         }else{
-        //             firebase.auth().createUserWithEmailAndPassword(this.email,this.passB)
-        //             .then(respuesta => {
-        //                 return respuesta.user.updateProfile({
-        //                     displayName: this.name
-        //                 }).then(()=>{
-        //                     this.error = [];
-        //                     this.name = "";
-        //                     this.email = "";
-        //                     this.passA = "";
-        //                     this.passB = "";
-        //                     let datosUser = {
-        //                         displayName: respuesta.user.displayName,
-        //                         email: respuesta.user.email,
-        //                         emailVerified: respuesta.user.emailVerified,
-        //                         uid: respuesta.user.uid
-        //                     };
-        //                     this.$store.dispatch('usurioRegistro',datosUser);
-        //                     this.$router.push('/');
-        //                 })
-        //             }).catch(error => {
-        //                 console.error(error);
-        //                 if (error.code == 'auth/email-already-in-use'){
-        //                     Swal.fire({
-        //                         icon: 'error',
-        //                         title: 'Oops...',
-        //                         text: 'El usuario ya existe',
-        //                         footer: '<b>AppToDo</b>'
-        //                     });
-        //                 }
-
-        //             })
       }
     },
     irSignin() {
-      this.$router.push("/busqueda");
+      this.$router.push("/login");
     }
   }
 };
