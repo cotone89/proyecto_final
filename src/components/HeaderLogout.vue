@@ -24,12 +24,13 @@
               <router-link :to="{ name: 'Busqueda'}" class="p-3 router__texto">B&uacute;squeda</router-link>
             </li>
             <li class="nav-item">
+              <router-link :to="{ name: 'Perfil'}" class="p-3 router__texto">Tu Perfil</router-link>
+            </li>
+            <li class="nav-item">
               <router-link :to="{ name: 'Favoritos'}" class="p-3 router__texto">Favoritos</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-logout" href="#" @click="salida">{{texto}}</a>
-              <!-- 1) Se pasa el evento del hijo HeaderLogout.vue al padre App.vue: -->
-              <!-- <a class="nav-logout" href="#" @click="salida">{{texto}}</a> -->
             </li>
           </ul>
         </div>

@@ -16,11 +16,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto text-center">
-            <!-- <li class="nav-item">
-              <router-link :to="{ name: 'Principal'}" class="p-3 router__texto">Home</router-link>
-            </li>-->
             <li class="nav-item">
               <router-link :to="{ name: 'Busqueda'}" class="p-3 router__texto">B&uacute;squeda</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'Registro'}" class="p-3 router__texto">Registro</router-link>
             </li>
             <li class="nav-item">
               <router-link :to="{ name: 'Login'}" class="p-3 router__texto">Login</router-link>
@@ -38,9 +38,6 @@ export default {
     marca() {
       return this.$store.getters.getMarca;
     }
-    // usuarioLogueado() {
-    //     return this.$store.getters.getUsuarioLogueado
-    // }
   }
 };
 </script>

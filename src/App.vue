@@ -2,7 +2,7 @@
   <div id="app">
     <Header v-if="!$store.state.uidUser"></Header>
     <!-- 1) Se pasa el evento del hijo HeaderLogout.vue al padre App.vue: -->
-    <HeaderLogout v-else @clickSalida="salida" :texto="texto"></HeaderLogout>
+    <HeaderLogout v-else @clickSalida="salida" :texto="texto_header"></HeaderLogout>
     <!-- <transition name="mi-transicion">-->
     <router-view />
     <!--</transition>-->
@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      texto: "Logout"
+      texto_header: "Logout"
     };
   },
   methods: {
@@ -52,6 +52,7 @@ export default {
       if (user) {
         console.log(user);
         this.$store.dispatch("idUserLogin", user.uid);
+        this.$store.dispatch("activandoMutacionDB", user.uid);
       } else {
         console.log("Salida de usuario");
         this.$store.dispatch("idUserLogin", "");

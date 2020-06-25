@@ -24,6 +24,12 @@
       @keyup.enter="login"
       @click.prevent="login"
     >{{login_boton}}</button>
+    <h3 class="login__textoIrRegistro">{{texto_irRegistro}}</h3>
+    <button
+      type="button"
+      class="btn btn-success login__boton-irRegistro mb-5 w-25"
+      @click="irRegistro"
+    >{{titulo_boton_irRegistro}}</button>
   </div>
 </template>
 <script>
@@ -38,7 +44,8 @@ export default {
       login_email: "",
       login_pass: "",
       login_error: "",
-      userOk: ""
+      texto_irRegistro: "¿No estás registrado?",
+      titulo_boton_irRegistro: "Ir a Registro!"
     };
   },
   methods: {
@@ -59,7 +66,6 @@ export default {
           .auth()
           .signInWithEmailAndPassword(this.login_email, this.login_pass)
           .then(() => {
-            this.userOK = "Usuario Correcto";
             this.$router.replace({ name: "Busqueda" });
           })
           .catch(error => {
@@ -88,6 +94,9 @@ export default {
             }
           });
       }
+    },
+    irRegistro() {
+      this.$router.push("/registro");
     }
   }
 };
@@ -110,5 +119,14 @@ export default {
 .login__grid {
   display: grid !important;
   justify-content: center;
+}
+.login__textoIrRegistro {
+  font-family: "Avenir";
+  font-size: 20px !important;
+  color: white;
+}
+.login__boton-irRegistro {
+  font-family: "Amatic SC", cursive;
+  font-size: 25px !important;
 }
 </style>
